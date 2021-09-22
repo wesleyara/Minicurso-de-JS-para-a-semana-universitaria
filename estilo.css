@@ -1,0 +1,310 @@
+/* ESTILOS GERAIS */
+
+body {
+    background-color: rgb(35, 146, 146);
+    font: normal 15pt Arial;
+}
+
+header {
+    color: white;
+    text-align: center;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 700px;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.63);
+}
+
+footer {
+    color: white;
+    text-align: center;
+    font-style: italic;
+}
+
+/* FIM */
+
+/* ESTILO DE INPUNT'S */
+
+input#cacl {
+    font-family: 'helvetica neue', helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid rgba(0,0,200,0.6);
+    background: rgba(0,0,200,0.3);
+    color: rgba(0,0,200,0.6);
+    box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+    border-radius: 10px;
+    padding: 3px 10px;
+    display: inline-block;
+    cursor:pointer;
+}
+
+input#but1 {
+    font-family: 'helvetica neue', helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid rgba(0,0,200,0.6);
+    background: rgba(0,0,200,0.3);
+    color: rgba(0,0,200,0.6);
+    box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+    border-radius: 10px;
+    padding: 3px 10px;
+    display: inline-block;
+    cursor:pointer;
+}
+
+input#cx1 {
+    width: 125px;
+    margin-left: 20px;
+    height: 20px;
+    text-align: center;
+    font: 12pt normal Arial;
+}
+
+input#cx3 {
+    width: 125px;
+    margin-left: 15px;
+    height: 20px;
+    font: 12pt normal Arial;
+    text-align: center;
+}
+
+input#cx4 {
+    width: 125px;
+    height: 20px;
+    font: 12pt normal Arial;
+    text-align: center;
+}
+
+input#cx2 {
+    width: 125px;
+    height: 20px;
+    font: 12pt normal Arial;
+    text-align: center;
+}
+
+input#vel1 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#des1 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#tem1 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#distan1 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#distan2 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#distan3 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 40px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+}
+
+input#temp1 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#temp2 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#temp3 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 40px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+}
+
+input#velo1 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#velo2 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 80px;
+}
+
+input#velo3 {
+    text-align: center;
+    font: 12pt normal Arial;
+    height: 23px;
+    width: 40px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+}
+
+input.medba {
+    width: 35px;
+    text-align: center;
+    font: 12pt normal Arial;
+}
+
+input#medbi {
+    font: 12pt normal Arial;
+    width: 350px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+}
+
+input#medanu {
+    font: 12pt normal Arial;
+    width: 350px;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+}
+
+/* FIM */
+
+/* ESTILO DE DIV'S */
+
+div#hora {
+    font: 12pt Arial normal;
+    color: white;
+    text-align: end;
+    margin-block-end: 10px;
+}
+
+div#rtres {
+    text-align: center;
+}
+
+div.area {
+    font: normal 20pt Arial;
+    background-color:rgb(35, 146, 146);
+    color: white;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+    margin-left: 30px;
+}
+
+div.area2 {
+    font: normal 20pt Arial;
+    background-color:rgb(35, 146, 146);
+    color: white;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+
+.calculadora{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+/* FIM */
+
+.botao {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    margin: 3px;
+    cursor: pointer;
+    background-color: rgb(31,31,31);
+    border: none;
+    color: white;
+}
+
+.botao:hover{
+    background-color: black;
+}
+
+#resultado{
+    background-color: white;
+    width: 207px;
+    height: 30px;
+    margin: 5px;
+    font-size: 25px;
+    color: black;
+    text-align: right;
+    padding: 5px;
+}
+
+select#primeiro {
+    margin-left: 120px;
+    height: 30px;
+}
+
+select#segundo {
+    height: 30px;
+}
+
+select#terceiro {
+    margin-left: 120px;
+    height: 30px;
+}
+
+select#quarto {
+    height: 30px;
+}
+
+select#quinto {
+    margin-left: 120px;
+    height: 30px;
+}
+
+select#sexto {
+    height: 30px;
+}

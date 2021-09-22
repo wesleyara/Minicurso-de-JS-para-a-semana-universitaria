@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferramentas de aprendizado</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body onload="carregar()">
+    <header>
+        <h1 id="titulo">Ferramentas de aprendizado</h1>
+    </header>
+    <div id="hora"></div>
+    <section id="sec">
+        <div id="rtres">
+            <p>Qual ferramenta você deseja usar?</p>
+        </div>
+        <div id="areas">
+                <div class="area" onclick="rd3()" id="enter1" onmouseenter="enter1()" onmouseout="exit1()">
+                    <i class='bx bx-coin-stack' ></i>
+                </div>
+                <div class="area" onclick="conv()" id="enter2" onmouseenter="enter2()" onmouseout="exit2()">
+                    <i class='bx bx-slider'></i>
+                </div> 
+                <div class="area" onclick="calcu1()" id="enter3" onmouseenter="enter3()" onmouseout="exit3()">
+                    <i class='bx bxs-calculator'></i>
+                </div>
+                <div class="area" onclick="vdt()" id="enter4" onmouseenter="enter4()" onmouseout="exit4()">
+                    <i class='bx bx-car'></i>
+                </div>
+                <div class="area" onclick="mediaNotas()" id="enter5" onmouseenter="enter5()" onmouseout="exit5()">
+                    <i class='bx bxs-graduation'></i>
+                </div>
+                <div class="area2"></div>
+        </div>
+        <div id="res">
+            
+        </div>
+    </section>
+    <div id="later"></div>
+
+    <script src="script.js"></script>
+    
+</body>
