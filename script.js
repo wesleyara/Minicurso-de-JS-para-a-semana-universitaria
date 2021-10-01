@@ -295,141 +295,297 @@ document.getElementById('resultado').innerHTML = "";
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function vdt() {
-areas.innerHTML = ""
-let tit = document.getElementById('titulo')
-tit.innerHTML = `Velocidade, deslocamento e tempo`
-rtres.innerHTML = `
-<p>O que você deseja encontrar?</p>
-<p>
-    <input type="button" id="but1" value="Velocidade" onclick="vel()">
-    <input type="button" id="but1" value="Deslocamento" onclick="des()">
-    <input type="button" id="but1" value="Tempo" onclick="tem()">
-</p>
-<p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"></p>
-`
-} // VELOCIDADE FUNCTION
+function pga() {
+    areas.innerHTML = ""
+    rtres.innerHTML = `
+        <p>Qual progressão você deseja?</p>
+        <p><input type="button" value="Progressão Aritimética" id="but1" onclick="pa()"> <input type="button" value="Progressão Geométrica" id="but1" onclick="pg()"></p>
+        <p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"></p>
+    `
+} // FUNCTION PA E PG
+
+function pa() {
+    rtres.innerHTML = `
+        <p>Descubra a razão da PA.</p> 
+        <p>Insira os termos da PA: <input type="number" class="papg" name="pa1" id="pa1"> <input type="button" value="Adicionar" id="but1" onclick="adpa1()"></p>
+        <div id="addga" class="padivs"></div>
+        <hr>
+        <p>Termo geral de uma PA:</p>
+        <p>Insira o(s) termo(s) da PA: <input type="number" class="papg" name="pa2" id="pa2"> <input type="button" value="Adicionar" id="but1" onclick="adpa2()">.</p> <p>Esse é o termo <input type="number" class="papg" name="pa4" id="pa4"> e a razão é <input type="number" class="papg" name="pa3" id="pa3"></p>
+        <div id="termgepa" class="padivs"></div>
+        <hr>
+        <p>Soma dos termos de uma PA:</p>
+        <p>Insira o primeiro termo da PA <input type="number" class="papg" name="pa5" id="pa5"> e o seu enésimo termo <input type="number" class="papg" name="pa6" id="pa6"></p>
+        <p>A posição do enésimo termo: <input type="number" class="papg" name="pa7" id="pa7"> <input type="button" value="Calcular" id="but1" onclick="adpa3()">.</p>
+        <div id="somapa" class="padivs"></div>
+        <p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"></p>
+    `
+} // FUNCTION PA
+
+var nump = []
+function adpa1() {
+    let numpa = document.getElementById('pa1')
+    let numero = Number(numpa.value)
+    let razaopa1 = nump[1] - nump[0]
+    if (numpa.value == "") {
+        window.alert('Insira os valores para realizar o calculo.')
+    } else if (nump.length > 1) {
+        nump.push(numero)
+        addga.innerHTML = `<p>Temos a PA (${nump}), onde a diferença entre os termos é de ${razaopa1}, portanto a PA tem razão ${razaopa1}.</p>
+        <p><input type="button" value="Limpar" id="but1" onclick="limpadapa1()"></p>`
+        document.getElementById('pa1').value = ''
+    } else {
+        nump.push(numero)
+        addga.innerHTML = `Temos a PA: (${nump})`
+        document.getElementById('pa1').value = ''
+    }
+} // RAZÃO DA PA
+
+function limpadapa1() {
+    addga.innerHTML = ""
+    nump = []
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var enu = document.getElementsByName('radbo')
-function tem() {
-rtres.innerHTML = `
-<p>
-<input type="number" placeholder="V" name="vel1" id="vel1"> = <input type="number" placeholder="&#x00394s"  name="des1" id="des1"> /&#x00394t.
-</p>
-<p>Qual a unidade de medida? <input type="radio" name="radbo" id="radbo1" checked>
-<label for="radbo1">h</label>
-<input type="radio" name="radbo" id="radbo2">
-<label for="radbo2">s</label>
-</p>
-<p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"><input type="button" id="but1" value="Calcular" onclick="temca()"></p>
-`
-} // CHAMA O CALCULO DO TEMPO
 
-function vel() {
-rtres.innerHTML = `
-<p>
-V = <input type="number" placeholder="&#x00394s"  name="des1" id="des1"> / <input type="number" placeholder="&#x00394t"  name="tem1" id="tem1">.
-</p>
-<p>Qual a unidade de medida? <input type="radio" name="radbo" id="radbo1" checked>
-<label for="radbo1">km/h</label>
-<input type="radio" name="radbo" id="radbo2">
-<label for="radbo2">m/s</label>
-</p>
-<p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"><input type="button" id="but1" value="Calcular" onclick="velca()"></p>
-`
-} // CHAMA O CALCULO DA VELOCIDADE
+function adpa2() {
+    let numpa = document.getElementById('pa2')
+    let numero = Number(numpa.value)
+    let raz = document.getElementById("pa3")
+    let razao = Number(raz.value)
+    let nump1 = numero
 
-function des() {
-rtres.innerHTML = `
-<p>
-<input type="number" placeholder="V" name="vel1" id="vel1"> = &#x00394s / <input type="number" placeholder="&#x00394t"  name="tem1" id="tem1">.
-</p>
-<p>Qual a unidade de medida? <input type="radio" name="radbo" id="radbo1" checked>
-<label for="radbo1">km</label>
-<input type="radio" name="radbo" id="radbo2">
-<label for="radbo2">m</label>
-</p>
-<p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"><input type="button" id="but1" value="Calcular" onclick="desca()"></p>
-`
-} // CHAMA O CALCULO DO DESLOCAMENTO
+    let termat = document.getElementById('pa4')
+    let terma = Number(termat.value)
+
+    if (numpa.value == "" || raz.value == "") {
+        window.alert('Insira os valores para realizar o calculo.')
+    } else {
+        termgepa.innerHTML = `Temos que o ${terma}º termo da PA é ${nump1}, e a razão ${razao}. Qual termo você deseja calcular? <input type="number" class="papg" name="term1" id="term1"> <input type="button" value="Calcular" id="but1" onclick="termca1()"> <p><div  id="termogerapa1"></div></p>`
+    }
+}// TERMO GERAL DA PA
+
+function termca1() {
+    let numpa = document.getElementById('pa2')
+    let numero = Number(numpa.value)
+    let nump1 = numero
+
+    let a1 = nump1
+    let raz = document.getElementById("pa3")
+    let razao = Number(raz.value) 
+    let term1 = document.getElementById("term1")
+    let terme1 = Number(term1.value)
+    let term = terme1-1
+    let termat = document.getElementById('pa4')
+    let terma = Number(termat.value)
+
+    let mult = razao*term
+    let termo = a1+mult
+
+    let multe = razao*terma
+    let termo1 = termo-multe
+
+    if (termat.value < term1.value) {
+        termogerapa1.innerHTML = `
+        <p>Temos que a fórmula para calcular o termo geral da PA é
+        <br><center><img src="imagens/termpa.png"></center>
+        <br>assim, se a<sub>1</sub> = ${a1}, n = ${term} e r = ${razao}, para calcular a<sub>n</sub> basta substituir na fórmula.</p>
+        <p>Então temos que o ${term}º termo dessa PA é ${termo}.</p>
+        <p><input type="button" value="Limpar" id="but1" onclick="limpadapa2()"></p>
+        `
+    } else {
+        termogerapa1.innerHTML = `
+        <p>Temos que a fórmula para calcular o termo geral da PA é
+        <br><center><img src="imagens/termpa.png"></center>
+        <br>assim, se a<sub>n</sub> = ${a1}, n = ${terma} e r = ${razao}, para calcular a<sub>n</sub> basta substituir na fórmula.</p>
+        <p>Então temos que o ${term}º termo dessa PA é ${termo1}.</p>
+        <p><input type="button" value="Limpar" id="but1" onclick="limpadapa2()"></p>
+        `
+    }
+    
+}
+
+function limpadapa2() {
+    termgepa.innerHTML = ''
+    nump1 = []
+    document.getElementById("pa3").value = ''
+    document.getElementById("pa4").value = ''
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function temca() {
-let v1 = document.getElementById("vel1")
-let v = Number(v1.value)
-let d1 = document.getElementById("des1")
-let d = Number(d1.value)
-let resu = d/v
+function adpa3() {
+    let pa5 = document.getElementById('pa5')
+    let primeiroTermo = Number(pa5.value)
+    let pa6 = document.getElementById('pa6')
+    let enesimoTermo = Number(pa6.value)
+    let pa7 = document.getElementById('pa7')
+    let posiçãoTermo = Number(pa7.value)
 
-if (enu[0].checked) {
-res.innerHTML = `
-<p>Queremos descobrir o tempo em horas e temos que a formula é dada acima.</p>
-<p>Diante disso, como &#x00394t está dividindo ${d}km, vamos passar ele para o outro lado da igualdade, multiplicando por ${v}km/h, então teremos:</p>
-<p>${v}&#x00394t = ${d},</p>
-<p>passando agora o ${v} dividindo, teremos: &#x00394t = ${d}/${v}.
-<p>Resolvendo a divisão, temos então que &#x00394t = ${resu}h.
-`
-} else {
+    let som = (primeiroTermo+enesimoTermo)*posiçãoTermo
+    let soma = som/2
 
-res.innerHTML = `
-    <p>Queremos descobrir o tempo em segundos e temos que a formula é dada acima.</p>
-    <p>Diante disso, como &#x00394t está dividindo ${d}m, vamos passar ele para o outro lado da igualdade, multiplicando por ${v}m/s, então teremos:</p>
-    <p>${v}&#x00394t = ${d},</p>
-    <p>passando agora o ${v} dividindo, teremos: &#x00394t = ${d}/${v}.
-    <p>Resolvendo a divisão, temos então que &#x00394t = ${resu}s.
-`
+    if (pa5.value == '' || pa6.value == '' || pa7.value == '') {
+        window.alert('Insira os valores para realizar o calculo.')
+    } else {
+        somapa.innerHTML = `<p>Temos que a fórmula da soma de uma PA é
+                        <br><center><img src="imagens/sompa.png"></center>
+                        <br>assim, se a<sub>1</sub> = ${primeiroTermo}, a<sub>n</sub> = ${enesimoTermo} e n = ${posiçãoTermo}, para calcularmos S<sub>n</sub>, basta substituir na fórmula, obtendo que a soma dos n termos dessa PA é igual a S<sub>n</sub> = ${soma}.</p>
+                        <p><input type="button" value="Limpar" id="but1" onclick="limpadapa3()"></p>
+                        `
+    }
+} // SOMA DA PA
+
+function limpadapa3() {
+    somapa.innerHTML = ''
+    document.getElementById("pa5").value = ''
+    document.getElementById("pa6").value = ''
+    document.getElementById("pa7").value = ''
 }
 
-} // CALCULAR O TEMPO
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function velca() {
-let t1 = document.getElementById("tem1")
-let t = Number(t1.value)
-let d1 = document.getElementById("des1")
-let d = Number(d1.value)
-let resu = d/t
+function pg() {
+    rtres.innerHTML = `
+        <p>Descubra a razão da PG.</p> 
+        <p>Insira os termos da PG <input type="number" class="papg" name="pa1" id="pa1"> <input type="button" value="Adicionar" id="but1" onclick="adpg1()"></p>
+        <div id="addgg" class="padivs"></div>
+        <hr>
+        <p>Termo geral de uma PG:</p>
+        <p>Insira um termo da PG: <input type="number" class="papg" name="pa2" id="pa2"> <input type="button" value="Adicionar" id="but1" onclick="adpg2()">.</p> <p>Esse é o termo <input type="number" class="papg" name="pa4" id="pa4"> e a razão é <input type="number" class="papg" name="pa3" id="pa3"></p>
+        <div id="termgepg" class="padivs"></div>
+        <hr>
+        <p>Soma dos termos de uma PG:</p>
+        <p>Insira o primeiro termo da PG <input type="number" class="papg" name="pa5" id="pa5"> a posição do seu enésimo termo <input type="number" class="papg" name="pa6" id="pa6"></p>
+        <p>e a razão da PG: <input type="number" class="papg" name="pa7" id="pa7"> <input type="button" value="Calcular" id="but1" onclick="adpg3()">.</p>
+        <div id="somapg" class="padivs"></div>
+        <p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"></p>
+    `
+} // FUNCTION PG
 
-if (enu[0].checked) {
-res.innerHTML = `
-<p>Queremos descobrir a velocidade média em km/h e temos que a formula é dada acima.</p>
-<p>Diante disso, basta dividir ${d}km por ${t}h, então teremos:</p>
-<p>V = ${resu}km/h</p>
-`
-} else {
-
-res.innerHTML = `
-    <p>Queremos descobrir a velocidade média em m/s e temos que a formula é dada acima.</p>
-    <p>Diante disso, basta dividir ${d}m por ${t}s, então teremos:</p>
-    <p>V = ${resu}m/s,</p>
-`
+var nume = []
+function adpg1() {
+    let numpa = document.getElementById('pa1')
+    let numero = Number(numpa.value)
+    let razaopa1 = nume[1] / nume[0]
+    if (numpa.value == "") {
+        window.alert('Insira os valores para realizar o calculo.')
+    } else if (nume.length > 1) {
+        nume.push(numero)
+        addgg.innerHTML = `<p>Temos a PG (${nume}), onde a divisão entre a<sub>n</sub> e a<sub>n-1</sub> é de ${razaopa1}, portanto a PG tem razão ${razaopa1}.</p>
+        <p><input type="button" value="Limpar" id="but1" onclick="limpadapg1()"></p>`
+        document.getElementById('pa1').value = ''
+    } else {
+        nume.push(numero)
+        addgg.innerHTML = `Temos a PG: (${nume})`
+        document.getElementById('pa1').value = ''
+    }
 }
-} // CALCULAR A VELOCIDADE
 
-function desca() {
-let t1 = document.getElementById("tem1")
-let t = Number(t1.value)
-let v1 = document.getElementById("vel1")
-let v = Number(v1.value)
-let resu = t*v
-
-if (enu[0].checked) {
-res.innerHTML = `
-<p>Queremos descobrir o deslocamento em km e temos que a formula é dada acima.</p>
-<p>Diante disso, como ${t}h está dividindo &#x00394s, vamos passar ele para o outro lado da igualdade, multiplicando por ${v}km/h, então teremos:</p>
-<p>&#x00394s = ${resu}km.</p>
-`
-} else {
-
-res.innerHTML = `
-    <p>Queremos descobrir o deslocamento em m e temos que a formula é dada acima.</p>
-    <p>Diante disso, como ${t}s está dividindo &#x00394s, vamos passar ele para o outro lado da igualdade, multiplicando por ${v}m/s, então teremos:</p>
-    <p>&#x00394s = ${resu}m.</p>
-`
+function limpadapg1() {
+    addgg.innerHTML = ""
+    nume = []
 }
-} // CALCULA O DESLOCAMENTO
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function adpg2() {
+    let numpa = document.getElementById('pa2')
+    let numero = Number(numpa.value)
+    let raz = document.getElementById("pa3")
+    let razao = Number(raz.value)
+    let nump1 = numero
+
+    let termat = document.getElementById('pa4')
+    let terma = Number(termat.value)
+
+    if (numpa.value == "" || raz.value == "") {
+        window.alert('Insira os valores para realizar o calculo.')
+    } else {
+        termgepg.innerHTML = `Temos que o ${terma}º termo da PG é ${nump1}, e a razão ${razao}. Qual termo você deseja calcular? <input type="number" class="papg" name="term1" id="term1"> <input type="button" value="Calcular" id="but1" onclick="termcg1()"> <p><div  id="termogerapg1"></div></p>`
+    }
+}
+
+function termcg1() {
+    let numpa = document.getElementById('pa2')
+    let numero = Number(numpa.value)
+    let nump1 = numero
+
+    let a1 = nump1
+    let raz = document.getElementById("pa3")
+    let razao = Number(raz.value) 
+    let term1 = document.getElementById("term1")
+    let terme1 = Number(term1.value)
+    let term = terme1-1
+    let termat = document.getElementById('pa4')
+    let terma = Number(termat.value)
+    let termr = terma-terme1
+    let terms = Math.pow(razao, term)
+
+    let termo = a1*terms
+    let termet = Math.pow(razao, termr)
+
+    let termo1 = a1/termet
+    console.log(termo1)
+    if (termat.value < term1.value) {
+        termogerapg1.innerHTML = `
+        <p>Temos que a fórmula para calcular o termo geral da PG é
+        <br><center><img src="imagens/termpg.png"></center>
+        <br>assim, se a<sub>1</sub> = ${a1}, n = ${term} e r = ${razao}, para calcular a<sub>n</sub> basta substituir na fórmula.</p>
+        <p>Então temos que o ${terme1}º termo dessa PG é ${termo}.</p>
+        <p><input type="button" value="Limpar" id="but1" onclick="limpadapg2()"></p>
+        `
+    } else {
+        termogerapg1.innerHTML = `
+        <p>Temos que a fórmula para calcular o termo geral da PG é
+        <br><center><img src="imagens/termpg.png"></center>
+        <br>assim, se a<sub>n</sub> = ${a1}, n = ${terma} e r = ${razao}, para calcular a<sub>n</sub> basta substituir na fórmula.</p>
+        <p>Então temos que o ${terme1}º termo dessa PG é ${termo1}.</p>
+        <p><input type="button" value="Limpar" id="but1" onclick="limpadapg2()"></p>
+        `
+    }
+}
+
+function limpadapg2() {
+    termgepg.innerHTML = ''
+    document.getElementById("pa3").value = ''
+    document.getElementById("pa4").value = ''
+    document.getElementById('pa2').value = ''
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function adpg3() {
+    let pa5 = document.getElementById('pa5')
+    let primeiroTermo = Number(pa5.value)
+    let pa6 = document.getElementById('pa6')
+    let enesimoTermo = Number(pa6.value)
+    let pa7 = document.getElementById('pa7')
+    let razãoDaPG = Number(pa7.value)
+
+    let potencia = Math.pow(razãoDaPG, enesimoTermo)
+    let som = primeiroTermo*(potencia-1)
+    let some = razãoDaPG-1
+    let soma = som/some
+
+    if (pa5.value == '' || pa6.value == '' || pa7.value == '') {
+        window.alert('Insira os valores para realizar o calculo.')
+    } else {
+        somapg.innerHTML = `<p>Temos que a fórmula da soma de uma PA é
+                        <br><center><img src="imagens/sompg.png"></center>
+                        <br>assim, se a<sub>1</sub> = ${primeiroTermo}, n = ${enesimoTermo} e q = ${razãoDaPG}, para calcularmos S<sub>n</sub>, basta substituir na fórmula, obtendo que a soma dos n termos dessa PA é igual a S<sub>n</sub> = ${soma}.</p>
+                        <p><input type="button" value="Limpar" id="but1" onclick="limpadapg3()"></p>
+                        `
+    }
+}
+
+function limpadapg3() {
+    somapg.innerHTML = ''
+    document.getElementById("pa5").value = ''
+    document.getElementById("pa6").value = ''
+    document.getElementById("pa7").value = ''
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -735,7 +891,7 @@ areas.innerHTML = `
         <div class="area" onclick="calcu1()" id="enter3" onmouseenter="enter3()" onmouseout="exit3()">
             <i class='bx bxs-calculator'></i>
         </div>
-        <div class="area" onclick="vdt()" id="enter4" onmouseenter="enter4()" onmouseout="exit4()">
+        <div class="area" onclick="pga()" id="enter4" onmouseenter="enter4()" onmouseout="exit4()">
             <i class='bx bx-car'></i>
         </div>
         <div class="area" onclick="mediaNotas()" id="enter5" onmouseenter="enter5()" onmouseout="exit5()">
@@ -784,13 +940,13 @@ enter1.innerHTML = `<i class='bx bxs-calculator'></i>`
 function enter4() {
 document.getElementById('enter4').style.fontSize = '12pt'
 let enter1 = document.getElementById('enter4')
-enter1.innerHTML = `Velocidade`
+enter1.innerHTML = `PA e PG`
 }
 
 function exit4() {
 document.getElementById('enter4').style.fontSize = '20pt'
 let enter1 = document.getElementById('enter4')
-enter1.innerHTML = `<i class='bx bx-car'></i>`
+enter1.innerHTML = `<i class='bx bx-bar-chart-alt'></i>`
 }
 
 function enter5() {

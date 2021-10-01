@@ -204,6 +204,13 @@ input#medanu {
     border: 0 none;
 }
 
+input.papg {
+    width: 50px;
+    font: 12pt normal Arial;
+    height: 23px;
+    text-align: center;
+}
+
 /* FIM */
 
 /* ESTILO DE DIV'S */
@@ -215,8 +222,16 @@ div#hora {
     margin-block-end: 10px;
 }
 
+div.padivs {
+    text-align: justify;
+}
+
 div#rtres {
     text-align: center;
+}
+
+div#res {
+    margin-top: 20px;
 }
 
 div.area {
