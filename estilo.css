@@ -2,7 +2,7 @@
 
 body {
     background-color: rgb(35, 146, 146);
-    font: normal 15pt Arial;
+    font: normal 15pt Times;
 }
 
 header {
@@ -205,6 +205,13 @@ input#medanu {
 }
 
 input.papg {
+    width: 50px;
+    font: 12pt normal Arial;
+    height: 23px;
+    text-align: center;
+}
+
+input.mepd {
     width: 50px;
     font: 12pt normal Arial;
     height: 23px;

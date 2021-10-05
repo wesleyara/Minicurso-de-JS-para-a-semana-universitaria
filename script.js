@@ -1,70 +1,102 @@
 function mediaNotas() {
+    let tit = document.getElementById('titulo')
+    tit.innerHTML = `Média ponderada`
     areas.innerHTML = ""
     rtres.innerHTML = `
-    <p>Qual a média na sua escola? <input type="number" class="medba" name="medscola" id="medscola"></p>
-    <hr>
-    <p>Média bimestral: <input type="text" name="medbi" readonly="true" id="medbi"></p> 
-    <p>Notas: <input type="number" placeholder="1º" class="medba" name="nota1" id="nota1"> + <input type="number" placeholder="2º" class="medba" name="nota2" id="nota2"> + <input type="number" placeholder="3º" class="medba" name="nota3" id="nota3"> <input type="button" id="but1" value="Calcular" onclick="notaBimestral()"></p>
-    <hr>
-    <p>Média anual: <input type="text" name="medanu" readonly="true" id="medanu"></p>
-    <p>Notas: <input type="number" placeholder="1º" class="medba" name="nota11" id="nota11"> + <input type="number" placeholder="2º"name="nota12" class="medba" id="nota12"> + <input type="number" placeholder="3º" class="medba" name="nota13" id="nota13"> + <input type="number" placeholder="4º" name="nota14" class="medba" id="nota14"> <input type="button" id="but1" value="Calcular" onclick="notaAnual()"></p>
-    <p><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"></p>`
+    <p>Calcule a média ponderada</p>
+    <p>Insira os valores para calcular a média <input type="number" class="mepd" name="medp" id="medp"> <input type="button" value="Adicionar" id="but1" onclick="admed()"></p>
+    <div id="medias"></div> 
+    <p>e seus respectivos pesos/frequências <input type="number" class="mepd" name="medp1" id="medp1"> <input type="button" value="Adicionar" id="but1" onclick="adpes()"></p>
+    <div id="pesoss"></div>
+    <p><input type="button" value="Calcular" id="but1" onclick="calmp()">
+    <div id="mepo"></div>
+    <div id="mepocalcu"></div>
+    `
+    res.innerHTML = `<center><input type="button" id="but1" value="&#x021A9 Página inicial" onclick="inicial()"></center>`
 } // MEDIA FUNCTION
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var valoresMedia = []
+function admed() {
+    let valores = document.getElementById("medp")
+    let valor = Number(valores.value)
 
-function notaBimestral() {
-let nota1 = document.getElementById('nota1')
-let not1 = Number(nota1.value)
-let nota2 = document.getElementById('nota2')
-let not2 = Number(nota2.value)
-let nota3 = document.getElementById('nota3')
-let not3 = Number(nota3.value)
-let medscol = document.getElementById('medscola')
-let medscola = Number(medscol.value)
+   if (valores.value == '') {
+       window.alert('Insira um valor diferente de vazio.')
+       document.getElementById('medp').value = "" 
+   } else {
+      valoresMedia.push(valor)
 
-let mediaFina = (not1 + not2 + not3) / 3
-if(not3 === 0) {
-mediaFina = (not1 + not2) / 2
+    medias.innerHTML = `Com os valores: ${valoresMedia}`
+    document.getElementById('medp').value = "" 
+   }
+    
 }
-let mediaFinal = mediaFina.toFixed(1)
 
-if (medscola < 5 || medscola > 7) {
-window.alert('Insira a média da escola corretamente.')
-} else if (not1 < 0 || not2 < 0 || not3 < 0) {
-window.alert('Insira valores entre 0 e 10.')
-} else if (not1 <= 10 && not2 <= 10 && not3 <= 10 && mediaFinal < medscola) {
-document.getElementById('medbi').value = `Sua média é ${mediaFinal}, portanto você está reprovado.`
-} else if (not1 <= 10 && not2 <= 10 && not3 <= 10 && mediaFinal >= medscola) {
-document.getElementById('medbi').value = `Sua média é ${mediaFinal}, portanto você está aprovado.`
+var pesosFrequências = []
+function adpes() {
+    let pesosAdd = document.getElementById('medp1')
+    let pesos = Number(pesosAdd.value)
+
+    if (pesosAdd.value <= 0 || pesosAdd.value == '') {
+        window.alert('Insira um valor diferente de vazio e não negativo.')
+        document.getElementById('medp1').value = ""
+    } else {
+        pesosFrequências.push(pesos)
+
+    pesoss.innerHTML = `Temos o peso/frequência respectivamente: ${pesosFrequências}`
+    document.getElementById('medp1').value = ""
+    }
+    
 }
-} // CALCULA A MEDIA BIMESTRAL
 
-function notaAnual() {
-let nota11 = document.getElementById('nota11')
-let not11 = Number(nota11.value)
-let nota12 = document.getElementById('nota12')
-let not12 = Number(nota12.value)
-let nota13 = document.getElementById('nota13')
-let not13 = Number(nota13.value)
-let nota14 = document.getElementById('nota14')
-let not14 = Number(nota14.value)
-let medscol = document.getElementById('medscola')
-let medscola = Number(medscol.value)
+function calmp() {
 
-let mediaFina = (not11 + not12 + not13 + not14) / 4
-let mediaFinal = mediaFina.toFixed(1)
+    
 
-if (medscola < 5 || medscola > 7) {
-window.alert('Insira a média da escola corretamente.')
-} else if (not11 < 0 || not12 < 0 || not13 < 0 || not14 < 0) {
-window.alert('Insira valores entre 0 e 10.')
-} else if (not11 <= 10 && not12 <= 10 && not13 <= 10 && not14 <= 10 && mediaFinal < medscola) {
-document.getElementById('medanu').value = `Sua média é ${mediaFinal}, portanto você está reprovado.`
-} else if (not11 <= 10 && not12 <= 10 && not13 <= 10 && not14 <= 10 && mediaFinal >= medscola) {
-document.getElementById('medanu').value = `Sua média é ${mediaFinal}, portanto você está aprovado.`
+    var c = 0
+    
+    var mult = []
+
+    while (c < pesosFrequências.length) {
+        mult.push(valoresMedia[c]*pesosFrequências[c])
+        c++
+    }
+
+    let m = 0
+
+    for(var i = 0; i < mult.length; i++) { // para somar todos os valores da array
+        m += mult[i]
+    }
+    
+    let mu = 0
+
+    for(var o = 0; o < pesosFrequências.length; o++) { // para somar todos os valores da array
+        mu += pesosFrequências[o]
+    }
+
+    let mediaPonderad = m/mu
+    let mediaPonderada = mediaPonderad.toFixed(1)
+
+    if (pesosFrequências.length == '' || valoresMedia == '') {
+        window.alert('Insira os valores para realizar o calculo.')
+    }else if (valoresMedia.length != pesosFrequências.length) {
+        window.alert('Você tem mais valores do que pesos/frequências, ou vice versa. Reveja!')
+    } else {
+        mepocalcu.innerHTML = `A média ponderada entre os valores inseridos e seus respectivos pesos/frequências é ${mediaPonderada}. <input type="button" value="Limpar" id="but1" onclick="limpadamdp()">`
+    }
+
+    
+    console.log(mult)
 }
-} // CALCULA A MEDIA ANUAL
+
+function limpadamdp() {
+    pesosFrequências = ''
+    valoresMedia = ''
+    pesoss.innerHTML = ''
+    medias.innerHTML = ''
+    mepocalcu.innerHTML = ''
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -378,7 +410,8 @@ function termca1() {
     let terme1 = Number(term1.value)
     let term = terme1-1
     let termat = document.getElementById('pa4')
-    let terma = Number(termat.value)
+    let termoi = Number(termat.value)
+    let terma = termoi-1
 
     let mult = razao*term
     let termo = a1+mult
@@ -399,7 +432,7 @@ function termca1() {
         <p>Temos que a fórmula para calcular o termo geral da PA é
         <br><center><img src="imagens/termpa.png"></center>
         <br>assim, se a<sub>n</sub> = ${a1}, n = ${terma} e r = ${razao}, para calcular a<sub>n</sub> basta substituir na fórmula.</p>
-        <p>Então temos que o ${term}º termo dessa PA é ${termo1}.</p>
+        <p>Então temos que o ${terme1}º termo dessa PA é ${termo1}.</p>
         <p><input type="button" value="Limpar" id="but1" onclick="limpadapa2()"></p>
         `
     }
@@ -895,7 +928,7 @@ areas.innerHTML = `
             <i class='bx bx-car'></i>
         </div>
         <div class="area" onclick="mediaNotas()" id="enter5" onmouseenter="enter5()" onmouseout="exit5()">
-            <i class='bx bxs-graduation'></i>
+            <i class='bx bx-slider-alt'></i>
         </div>
         <div class="area2"></div>
 `
@@ -950,13 +983,13 @@ enter1.innerHTML = `<i class='bx bx-bar-chart-alt'></i>`
 }
 
 function enter5() {
-document.getElementById('enter5').style.fontSize = '12pt'
+document.getElementById('enter5').style.fontSize = '9pt'
 let enter1 = document.getElementById('enter5')
-enter1.innerHTML = `Média escolar`
+enter1.innerHTML = `Média ponderada`
 }
 
 function exit5() {
 document.getElementById('enter5').style.fontSize = '20pt'
 let enter1 = document.getElementById('enter5')
-enter1.innerHTML = `<i class='bx bxs-graduation'></i>`
+enter1.innerHTML = `<i class='bx bx-slider-alt'></i>`
 }
